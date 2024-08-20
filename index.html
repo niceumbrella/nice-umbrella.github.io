@@ -1,9 +1,49 @@
-{% extends "design/layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>NDS Designs</title>
+		<link href="/static/styles.css'" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
+		<script src="/static/navbar.js"></script>
 	
-{% block body %}
+	</head>
+		<body>
+			<header>
+				<nav>
+					<div class="nav-logo">
+						<a href="/"><span class="logo-highlight">NDS</span> DESIGNS</a>
+					</div>
+					<a href="#" class="toggle-button">
+						<span class="bar"></span>
+						<span class="bar"></span>
+						<span class="bar"></span>
+					</a>
+					<div class="nav-links">
+						<ul>
+							<li><a href="about.html">About</a></li>
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+
 	<div class="main">
 		<h1 class="logo"><span class="logo-highlight">NDS</span> DESIGNS</h1>
-		<h4>London, England</h4>
+		<h4>Charlotte | London</h4>
 		<h4>Nicole D. Saganice</h4>
 	</div>
-{% endblock %}
+	<div class="footer-links">
+			<a href="mailto:kitty@ndsdesigns.com">kitty@ndsdesigns.com</a>
+			<span> | +1 (845) 654-2584</span>
+			<br>
+			<a href="http://www.instagram.com/nds_designs">
+				<img src="instagram.png">
+			</a>
+		</div>
+	</body>
+</html>
