@@ -1,0 +1,24 @@
+{% extends "design/layout.html" %}
+	
+{% block body %}
+	<div class="main">
+		
+		<h2>Welcome back {{ client.first_name }}</h2>
+		
+		{% for project in projects %}
+		<div class="project">
+			<div>
+				<a href="project/{{ project.id }}">
+				{{ project.address_1 }}
+				</a>
+			</div>
+			<div>
+				<a href="project/{{ project.id }}">
+				<img src="{{ project.project_images.first.image.url }}" width="250" title="{{ image.alt_text }}" class="project-image">
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+
+	</div>
+{% endblock %}

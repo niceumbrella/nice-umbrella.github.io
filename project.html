@@ -1,0 +1,71 @@
+{% extends "design/layout.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block script %}
+	<script src="{% static 'design/project.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="main">
+		<h3>{{ project.address_1 }}</h3>
+		<h6>
+			<span>Budget: ${{ project.budget | intcomma }}</span>
+				|
+			<span>Used: ${{ project.budget_used | intcomma }}</span>
+				|
+			<span>Stage: {{ project.get_stage.stage }}</span>
+		</h6>
+		<div class="document-container">
+			<div class = "documents-title">
+				For Approval:
+			</div>
+			<div class="documents">
+				{% for visual in unapproved_visuals %}
+				<img src="{{ visual.image.url }}" class="unapproved-list" id="{{ visual.id }}">
+				{% endfor %}
+			</div>
+		</div>
+		<div class="document-container">
+			<div class = "documents-title">
+				Previously Approved:
+			</div>
+			<div class="documents">
+				{% for visual in approved_visuals %}
+				<div class="for-overlay">
+					<img src="{{ visual.image.url }}" class="approved-list" id="{{ visual.id }}" data-approver="{{ visual.approver.first_name }}">
+					<div class="visual-overlay">
+						<!-- Reserved for future use to display approver and date -->
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div id="backDropModal">
+	<!-- Needed for backdrop when showing full image -->
+		<div id="commentFormModal">
+			<div id="comments">
+			</div>
+				<form action="/project/{{ project.id }}" method="post">
+				{% csrf_token %}
+				<br>
+				<p>
+					<label for="comment">Add comment:</label>
+				</p>
+				<textarea name="comment" rows="4" cols="60"></textarea>
+				<p>
+					<label for="approval">Approve Design:</label>
+					<input type="checkbox" name="approval">
+				</p>
+				<p>
+					<input type="hidden" name="visual" id="visualID">
+				</p>
+				<p>
+					<input type="submit" class="submit-button">
+				</p>
+			</form>
+		</div>
+	</div>
+{% endblock %}

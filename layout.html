@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{% block title %}NDS Designs{% endblock %}</title>
+		<link href="{% static 'design/styles.css' %}" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
+		<script src="{% static 'design/navbar.js' %}"></script>
+		{% block script %}
+		{% endblock %}
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="nav-logo">
+					<a href="/"><span class="logo-highlight">NDS</span> DESIGNS</a>
+				</div>
+				<a href="#" class="toggle-button">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</a>
+				<div class="nav-links">
+					<ul>
+						<li><a href="/about">About</a></li>
+						<li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+						<li><a href="{% url 'book' %}">Book a Consultation</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url 'client_area' %}">Client Area</a></li>
+						<li><a href="{% url 'logout' %}">Logout</a></li>
+						{% else %}
+						<li><a href="{% url 'login' %}">Login</a></li>
+						{% endif %}
+						<li><a href="{% url 'contact' %}">Contact</a></li>
+						{% if user.is_staff %}
+						<li><a href="/admin">Admin</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</nav>
+		</header>
+		{% block body %}
+		{% endblock %}
+		<div class="footer-links">
+			<a href="mailto:kitty@ndsdesigns.com">kitty@ndsdesigns.com</a>
+			<span> | +1 (845) 654-2584</span>
+			<br>
+			<a href="http://www.instagram.com/nds_designs">
+				<img src="{% static 'design/instagram.png' %}">
+			</a>
+		</div>
+	</body>
+</html>

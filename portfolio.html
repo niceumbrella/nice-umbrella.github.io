@@ -1,0 +1,33 @@
+{% extends "design/layout.html" %}
+{% load static %}
+
+{% block script %}
+	<script src="{% static 'design/portfolio.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="gallery">
+	{% for image in images %}
+		<img src="{{ image.image.url }}" width="250" title="{{ image.alt_text }}" class="project-image">
+	{% endfor %}
+</div>
+	
+<div id="backDropModal">
+	<!-- Needed for backdrop when showing full image -->
+	<!-- Next/Previous links from tutorial at: https://www.w3schools.com/graphics/svg_polyline.asp-->
+	<a id="previous">
+		<svg id="previous-svg" height="72" width="18">
+			<polyline fill="none" stroke="white" points="18,0 0,36 18,72">
+			</polyline>
+		</svg>
+	</a>
+	<a id="next">
+		<svg id="next-svg" height="72" width="18">
+			<polyline fill="none" stroke="white" points="0,0 18,36 0,72">
+			</polyline>
+		</svg>
+	</a>
+</div>
+
+{% endblock %}

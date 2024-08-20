@@ -1,0 +1,41 @@
+{% extends "design/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<div id="contact-form">
+	<form action="{% url 'contact' %}" method="post">
+		{% csrf_token %}
+		<p>
+			<label for="name">Your name:</label>
+			<input type="text" name="name" id="name" placeholder="Enter your name" required="">
+		</p>
+		<p>
+			<label for="email">Your email:</label>
+			<input type="email" name="email" placeholder="Enter email" required="">
+		</p>
+		<p>
+			<label for="phone">Your phone:</label>
+			<input type="tel" name="phone" placeholder="(000) 000-0000">
+		</p>
+		<p>
+			<label for="budget">Budget:</label>
+			<select name="budget">
+<!-- 				<option disabled selected>Budget</option> -->
+				<option value="50000">$50,000 - $99,000</option>
+				<option value="100000">$100,000 - $199,000</option>
+				<option value="200000">$200,000+</option>
+			</select>
+		</p>
+		<p>
+			<label for="id_email_consent">I consent to receive emails from NDS Studios:</label>
+			<input type="checkbox" name="email_consent" required id="id_email_consent">
+		</p>
+		<p>
+			<input type="submit" id="submitAppointment" class="submit-button">
+		</p>
+	</form>
+</div>
+
+{% endblock %}

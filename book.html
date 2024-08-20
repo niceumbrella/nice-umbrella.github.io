@@ -1,0 +1,36 @@
+{% extends "design/layout.html" %}
+{% load static %}
+
+{% block script %}
+	<script src="{% static 'design/booking.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div id="calendar">
+	<!-- Hold for AJAX request to get calendar -->
+</div>
+<div id="times">
+	<!-- Hold for AJAX request for time slots -->
+</div>
+
+<div id="backDropModal">
+	<!-- Needed for backdrop when choosing time slot -->
+	<div id="timePickerModal">
+		<h3>AVAILABLE APPOINTMENTS</h3>
+		<div id="timeSlots"></div>
+	<!-- Will contain buttons for available time slots -->
+	</div>
+	<div id="appointmentFormModal">
+		<form action="{% url 'book' %}" method="post">
+			{% csrf_token %}
+			{{ appointment_form.as_p }}
+			<button type="submit" id="submitAppointment" class="submit-button">
+				Book Appointment
+			</button>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

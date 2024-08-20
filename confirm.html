@@ -1,0 +1,20 @@
+{% extends "design/layout.html" %}
+{% load static %}
+
+{% block script %}
+<!-- 	<script src="{% static 'design/script.js' %}"></script> -->
+{% endblock %}
+
+{% block body %}
+
+<div id="appointmentConfirmationModal">
+	<!-- Thank you message after booking -->
+	{{ message }} for {{ date }} with {{ designer }} at
+	 {{ time }}.
+</div>
+
+<div id="home-button-container">
+	<a href="/" id="home-button" class="submit-button">Back to Home</a>
+</div>
+
+{% endblock %}
